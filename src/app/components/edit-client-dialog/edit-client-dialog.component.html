@@ -1,0 +1,181 @@
+<h2>Edit Client</h2>
+<mat-dialog-content>
+  <mat-vertical-stepper #stepper>
+    <mat-step [stepControl]="firstStepFormGroup">
+      <form [formGroup]="firstStepFormGroup" fxLayout="column">
+        <ng-template matStepLabel>Personal Data</ng-template>
+        <div fxLayout="row" fxFlexOffset="28px" fxLayoutGap="12px">
+          <div fxLayout="column" fxLayoutGap="12px">
+            <mat-form-field appearance="fill">
+              <mat-label>Surname</mat-label>
+              <input matInput formControlName="surname" mask="S*" required autocomplete="off">
+              <mat-error>Please enter a valid Surname</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" mask="S*" required autocomplete="off">
+              <mat-error>Please enter a valid Name</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Middle Name</mat-label>
+              <input matInput formControlName="middleName" mask="S*" required autocomplete="off">
+              <mat-error>Please enter a valid Middle Name</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayoutGap="12px">
+            <mat-form-field appearance="fill">
+              <mat-label>Birth Date</mat-label>
+              <input matInput formControlName="birthDate" type="date" required autocomplete="off">
+              <mat-error>Please enter a valid Birth Date</mat-error>
+            </mat-form-field>
+            <label>Gender</label>
+            <mat-radio-group formControlName="gender" fxLayoutGap="12px">
+              <mat-radio-button value="M">Male</mat-radio-button>
+              <mat-radio-button value="F">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div fxFlexOffset="12px">
+          <button mat-flat-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondStepFormGroup">
+      <form [formGroup]="secondStepFormGroup" fxLayout="column">
+        <ng-template matStepLabel>Passport Data</ng-template>
+        <div fxLayout="row" fxFlexOffset="28px" fxLayoutGap="12px">
+          <div fxLayout="column" fxLayoutGap="12px">
+            <mat-form-field appearance="fill">
+              <mat-label>Passport Series</mat-label>
+              <mat-select formControlName="passportSeries">
+                <mat-option *ngFor="let ps of passportSeriesTypes" [value]="ps">
+                  {{ps}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Passport Number</mat-label>
+              <input matInput formControlName="passportNumber" mask="00 00 000" [showMaskTyped]="true" required autocomplete="off">
+              <mat-error>Please enter a valid Passport Number</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>ID Number</mat-label>
+              <input matInput formControlName="idNumber" [pattern]="idNumberPattern"  mask="0 000000 S 000 SS 0" [showMaskTyped]="true" required autocomplete="off">
+              <mat-error>Please enter a valid ID Number</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayoutGap="12px">
+            <mat-form-field appearance="fill">
+              <mat-label>Issued By</mat-label>
+              <input matInput formControlName="issuedBy" required autocomplete="off">
+              <mat-error>This field is mandatory</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Date of Issue</mat-label>
+              <input matInput formControlName="dateOfIssue" type="date" autocomplete="off">
+              <mat-error>Please enter a valid Date of Issue</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Place of Birth</mat-label>
+              <input matInput formControlName="placeOfBirth" required autocomplete="off">
+              <mat-error>This field is mandatory</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlexOffset="12px">
+          <button mat-flat-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdStepFormGroup">
+      <form [formGroup]="thirdStepFormGroup" fxLayout="column">
+        <ng-template matStepLabel>Additional Information</ng-template>
+        <div fxLayout="row" fxFlexOffset="28px" fxLayoutGap="12px">
+          <div fxLayout="column" fxLayoutGap="12px">
+            <mat-form-field appearance="fill">
+              <mat-label>Actual Residence City</mat-label>
+              <mat-select formControlName="actualResidenceCity">
+                <mat-option *ngFor="let city of cities" [value]="city">
+                  {{city}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Actual Residence Address</mat-label>
+              <input matInput formControlName="actualResidenceAddress" required autocomplete="off">
+              <mat-error>This field is mandatory</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Marital Status</mat-label>
+              <mat-select formControlName="maritalStatus">
+                <mat-option *ngFor="let ms of maritalStatuses" [value]="ms">
+                  {{ms}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Nationality</mat-label>
+              <mat-select formControlName="nationality">
+                <mat-option *ngFor="let nationality of nationalities" [value]="nationality">
+                  {{nationality}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" fxLayoutGap="12px">
+            <mat-form-field appearance="fill">
+              <mat-label>Disability</mat-label>
+              <mat-select formControlName="disability">
+                <mat-option value="0">None</mat-option>
+                <mat-option value="1">I</mat-option>
+                <mat-option value="2">II</mat-option>
+                <mat-option value="3">III</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="12px">
+              <div fxFlex>Retired?</div>
+              <mat-slide-toggle formControlName="retired"></mat-slide-toggle>
+            </div>
+            <div fxLayout="row" fxLayoutGap="12px">
+              <div fxFlex>Bound to Military Service?</div>
+              <mat-slide-toggle formControlName="boundToMilitaryService"></mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+        <div fxFlexOffset="12px">
+          <button mat-flat-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="forthStepFormGroup">
+      <form [formGroup]="forthStepFormGroup" fxLayout="column" fxFlexOffset="28px" fxLayoutGap="12px">
+        <ng-template matStepLabel>Optional</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Home Number</mat-label>
+          <input matInput formControlName="homeNumber" mask="00-00-00" [showMaskTyped]="true" autocomplete="off">
+          <mat-error>Please enter a valid Home Number</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput formControlName="mobileNumber" prefix="+375" mask="(00) 000-00-00" [showMaskTyped]="true" autocomplete="off">
+          <mat-error>Please enter a valid mobile number</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" autocomplete="off">
+          <mat-error>Please enter a valid Email Address</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Monthly Income</mat-label>
+          <input matInput formControlName="monthlyIncome" autocomplete="off">
+          <mat-error>Please enter a valid Monthly Income</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-step>
+  </mat-vertical-stepper>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="end">
+  <button mat-button color="warn" (click)="delete()">Delete</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" [disabled]="!formReady" (click)="save()">Submit</button>
+</mat-dialog-actions>

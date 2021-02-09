@@ -1,0 +1,99 @@
+<app-nav></app-nav>
+<button mat-fab color="accent" class="fab" (click)="openNewClientDialog()">
+  <mat-icon>add</mat-icon>
+</button>
+<div class="clients-table-container">
+  <mat-table class="clients-table mat-elevation-z8" [dataSource]="clients">
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef>Surname</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.surname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="middleName">
+      <mat-header-cell *matHeaderCellDef> Middle Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.middleName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="birthDate">
+      <mat-header-cell *matHeaderCellDef>Birth Date</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.birthDate}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="gender">
+      <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.gender}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="passportSeries">
+      <mat-header-cell *matHeaderCellDef>Passport Series</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.passportSeries}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="passportNumber">
+      <mat-header-cell *matHeaderCellDef>Passport Number</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.passportNumber}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="issuedBy">
+      <mat-header-cell *matHeaderCellDef>Issued By</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.issuedBy}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dateOfIssue">
+      <mat-header-cell *matHeaderCellDef>Date Of Issue</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.dateOfIssue}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="idNumber">
+      <mat-header-cell *matHeaderCellDef>ID Number</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.idNumber}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="placeOfBirth">
+      <mat-header-cell *matHeaderCellDef>Place Of Birth</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.placeOfBirth}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actualResidenceCity">
+      <mat-header-cell *matHeaderCellDef>Actual Residence City</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.actualResidenceCity}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actualResidenceAddress">
+      <mat-header-cell *matHeaderCellDef>Actual Residence Address</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.actualResidenceAddress}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="homeNumber">
+      <mat-header-cell *matHeaderCellDef>Home Number</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.homeNumber}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mobileNumber">
+      <mat-header-cell *matHeaderCellDef>Mobile Number</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.mobileNumber}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="maritalStatus">
+      <mat-header-cell *matHeaderCellDef>Marital Status</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.maritalStatus}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="nationality">
+      <mat-header-cell *matHeaderCellDef>Nationality</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nationality}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="disability">
+      <mat-header-cell *matHeaderCellDef>Disability</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.disability}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="retired">
+      <mat-header-cell *matHeaderCellDef>Retired</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.retired}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="monthlyIncome">
+      <mat-header-cell *matHeaderCellDef>Monthly Income</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.monthlyIncome}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="boundToMilitaryService">
+      <mat-header-cell *matHeaderCellDef>Bound To Military Service</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.boundToMilitaryService}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditClientDialog(row)"></mat-row>
+  </mat-table>
+</div>
