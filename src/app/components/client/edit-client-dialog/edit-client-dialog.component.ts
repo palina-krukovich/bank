@@ -1,11 +1,12 @@
 import {Component, EventEmitter, Inject, OnInit} from '@angular/core';
-import {Client} from '../../model/client';
+import {Client} from '../../../model/client';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpService} from '../../services/http.service';
+import {HttpService} from '../../../services/http.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {CITIES, CITIZENSHIPS, MARITAL_STATUSES, PASSPORT_SERIES_TYPES} from '../../../data/data';
 
-export interface DialogData {
+interface DialogData {
   client: Client;
 }
 
@@ -18,11 +19,10 @@ export class EditClientDialogComponent implements OnInit {
   editClientEvent = new EventEmitter();
   deleteClientEvent = new EventEmitter();
 
-  passportSeriesTypes = ['AB', 'BM', 'HB', 'KH', 'MP', 'MC', 'KB', 'PP', 'SP', 'DP'];
-  idNumberPattern = `[1-6][0-9]{6}[ABCKEMH][0-9]{3}(PB|BA|BI)[0-9]`;
-  cities = ['Minsk', 'Gomel', 'Grodno', 'Brest', 'Soligorsk', 'Mogilev', 'Vitebsk'];
-  maritalStatuses = ['Single', 'Married', 'Widowed', 'Divorced', 'Separated'];
-  nationalities = ['Republic of Belarus'];
+  passportSeriesTypes = PASSPORT_SERIES_TYPES;
+  cities = CITIES;
+  maritalStatuses = MARITAL_STATUSES;
+  citizenships = CITIZENSHIPS;
 
   surnameControl = this.fb.control(this.data.client.surname, [
     Validators.required,
@@ -41,7 +41,7 @@ export class EditClientDialogComponent implements OnInit {
   ]);
   genderControl = this.fb.control(this.data.client.gender, [
     Validators.required,
-    Validators.pattern(`[FM]`)
+    Validators.pattern(`[MF]`)
   ]);
 
   firstStepFormGroup: FormGroup = this.fb.group({
@@ -55,19 +55,14 @@ export class EditClientDialogComponent implements OnInit {
 
   passportSeriesControl = this.fb.control(this.data.client.passportSeries, [
     Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(2),
-    Validators.pattern(`AB|BM|HB|KH|MP|MC|KB|PP|SP|DP`)
+    Validators.pattern(`[A-Z]{2}`)
   ]);
   passportNumberControl = this.fb.control(this.data.client.passportNumber, [
     Validators.required,
-    Validators.minLength(7),
-    Validators.maxLength(7),
     Validators.pattern(`[0-9]{7}`)
   ]);
   issuedByControl = this.fb.control(this.data.client.issuedBy, [
     Validators.required,
-    Validators.minLength(1),
     Validators.pattern(`.*[a-zA-Z].*`)
   ]);
   dateOfIssueControl = this.fb.control(this.data.client.dateOfIssue, [
@@ -75,13 +70,10 @@ export class EditClientDialogComponent implements OnInit {
   ]);
   idNumberControl = this.fb.control(this.data.client.idNumber, [
     Validators.required,
-    Validators.minLength(14),
-    Validators.maxLength(14),
-    Validators.pattern(this.idNumberPattern)]
+    Validators.pattern(`[0-9]{7}[A-Z][0-9]{3}[A-Z]{2}[0-9]`)]
   );
   placeOfBirthControl = this.fb.control(this.data.client.placeOfBirth, [
     Validators.required,
-    Validators.minLength(1),
     Validators.pattern(`.*[a-zA-Z].*`)
   ]);
 
@@ -95,22 +87,20 @@ export class EditClientDialogComponent implements OnInit {
   });
 
 
-  actualResidenceCityControl = this.fb.control(this.data.client.actualResidenceCity, [
+  cityControl = this.fb.control(this.data.client.city, [
     Validators.required,
   ]);
-  actualResidenceAddressControl = this.fb.control(this.data.client.actualResidenceAddress, [
+  addressControl = this.fb.control(this.data.client.address, [
     Validators.required
   ]);
   maritalStatusControl = this.fb.control(this.data.client.maritalStatus, [
     Validators.required
   ]);
-  nationalityControl = this.fb.control(this.data.client.nationality, [
+  citizenshipControl = this.fb.control(this.data.client.citizenship, [
     Validators.required
   ]);
   disabilityControl = this.fb.control(this.data.client.disability.toString(), [
     Validators.required,
-    Validators.minLength(1),
-    Validators.maxLength(1),
     Validators.pattern('[0-3]')]
   );
   retiredControl = this.fb.control(this.data.client.retired, [
@@ -121,10 +111,10 @@ export class EditClientDialogComponent implements OnInit {
   ]);
 
   thirdStepFormGroup: FormGroup = this.fb.group({
-    actualResidenceCity: this.actualResidenceCityControl,
-    actualResidenceAddress: this.actualResidenceAddressControl,
+    city: this.cityControl,
+    address: this.addressControl,
     maritalStatus: this.maritalStatusControl,
-    nationality: this.nationalityControl,
+    citizenship: this.citizenshipControl,
     disability: this.disabilityControl,
     retired: this.retiredControl,
     boundToMilitaryService: this.boundToMilitaryServiceControl
@@ -132,14 +122,10 @@ export class EditClientDialogComponent implements OnInit {
 
 
   homeNumberControl = this.fb.control('', [
-    Validators.minLength(6),
-    Validators.maxLength(6),
     Validators.pattern(`[0-9]{6}`)
   ]);
   mobileNumberControl = this.fb.control('', [
-    Validators.minLength(9),
-    Validators.maxLength(9),
-    Validators.pattern(`(29|33|44|25)[0-9]{7}`)
+    Validators.pattern(`[0-9]{9}`)
   ]);
   emailControl = this.fb.control('', [
     Validators.email
@@ -191,13 +177,13 @@ export class EditClientDialogComponent implements OnInit {
       dateOfIssue: this.dateOfIssueControl.value,
       idNumber: this.idNumberControl.value,
       placeOfBirth: this.placeOfBirthControl.value,
-      actualResidenceCity: this.actualResidenceCityControl.value,
-      actualResidenceAddress: this.actualResidenceAddressControl.value,
+      city: this.cityControl.value,
+      address: this.addressControl.value,
       homeNumber: this.homeNumberControl.value,
       mobileNumber: this.mobileNumberControl.value,
       email: this.emailControl.value,
       maritalStatus: this.maritalStatusControl.value,
-      nationality: this.nationalityControl.value,
+      citizenship: this.citizenshipControl.value,
       disability: this.disabilityControl.value,
       retired: this.retiredControl.value,
       monthlyIncome: this.monthlyIncomeControl.value,

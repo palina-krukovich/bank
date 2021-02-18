@@ -1,0 +1,63 @@
+<h2>New Deposit Agreement</h2>
+<mat-dialog-content>
+  <form [formGroup]="formGroup">
+    <div fxLayout="row" fxLayoutGap="24px">
+      <div fxLayout="column" fxLayoutGap="24px">
+        <mat-form-field appearance="fill">
+          <mat-label>Agreement Number</mat-label>
+          <input matInput formControlName="agreementNumber" mask="0*" required autocomplete="off">
+          <mat-error>Please enter valid Agreement Number</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Client</mat-label>
+          <mat-select formControlName="client">
+            <mat-option *ngFor="let client of clients" [value]="client.id">
+              {{client.name}} {{client.surname}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Please select Client</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Bank Program</mat-label>
+          <mat-select formControlName="bankProgram">
+            <mat-option *ngFor="let bankProgram of bankPrograms" [value]="bankProgram.id">
+              {{bankProgram.name}} ({{bankProgram.currency}}) - {{bankProgram.payType}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Please select bank program</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayoutGap="24px">
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <input matInput formControlName="startDate" type="date" required autocomplete="off">
+          <mat-error>Please enter valid Start Date</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Period, months</mat-label>
+          <input matInput type="number" formControlName="period" required autocomplete="off">
+          <mat-hint>
+            {{currentBankProgram.minPeriod ? 'from ' + currentBankProgram.minPeriod : ''}}
+            {{currentBankProgram.maxPeriod ? 'up to ' + currentBankProgram.maxPeriod : ''}}
+            {{currentBankProgram.minPeriod || currentBankProgram.maxPeriod ? ' months' : ''}}
+          </mat-hint>
+          <mat-error>Please enter valid Period</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Amount, {{currentBankProgram.currency || 'currency'}}</mat-label>
+          <input matInput type="number" formControlName="amount" required autocomplete="off">
+          <mat-hint>
+            {{currentBankProgram.minAmount ? 'from ' + currentBankProgram.minAmount : ''}}
+            {{currentBankProgram.maxAmount ? 'up to ' + currentBankProgram.maxAmount : ''}}
+            {{currentBankProgram.minAmount || currentBankProgram.maxAmount ? ' ' +  currentBankProgram.currency : ''}}
+          </mat-hint>
+          <mat-error>Please enter valid Period</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" [disabled]="!formReady" (click)="save()">Submit</button>
+</mat-dialog-actions>

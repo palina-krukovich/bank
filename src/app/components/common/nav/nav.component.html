@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row" fxLayoutGap="24px">
+    <span>PRIOR BANK</span>
+    <a mat-button href="/home">Home</a>
+    <a mat-button href="/client">Client</a>
+    <a mat-button href="/bank-program">Bank Programs</a>
+    <a mat-button href="/deposit">Deposit</a>
+    <a mat-button href="/credit">Credit</a>
+    <button mat-button (click)="closeBankDay()">Close Bank Day</button>
+    <div fxFlex></div>
+    <a mat-button href="https://github.com/polina-krukovich/bank">
+      <img src="assets/images/github.png" width="28" height="28">
+      Github
+    </a>
+  </mat-toolbar-row>
+  <mat-toolbar-row fxLayout="row" fxLayoutGap="100px">
+    <span class="mat-body-2">{{currentDate | date: 'MMM d, y'}}</span>
+    <div fxLayoutGap="24px">
+      <span class="mat-body-2">Bank Account: </span>
+      <span class="mat-body-2">{{getBankAmount('USD')}} USD</span>
+      <span class="mat-body-2">{{getBankAmount('EUR')}} EUR</span>
+      <span class="mat-body-2">{{getBankAmount('BYN')}} BYN</span>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

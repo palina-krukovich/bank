@@ -1,0 +1,80 @@
+<h2>Transactions</h2>
+<mat-dialog-content>
+  <div fxLayout="row" fxLayoutGap="24px">
+    <div fxFlex fxLayout="column" *ngIf="!!data.accountCurrent">
+      <h3>Current Account ({{data.accountCurrent.activity}})</h3>
+      <table mat-table [dataSource]="currentAccountTransactions">
+        <ng-container matColumnDef="debit">
+          <th mat-header-cell *matHeaderCellDef> Debit {{isActive(data.accountCurrent) ? '+' : '-'}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.debit}} </td>
+        </ng-container>
+        <ng-container matColumnDef="credit">
+          <th mat-header-cell *matHeaderCellDef> Credit {{isActive(data.accountCurrent) ? '-' : '+'}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.credit}} </td>
+        </ng-container>
+        <ng-container matColumnDef="currency">
+          <th mat-header-cell *matHeaderCellDef> Currency </th>
+          <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+        </ng-container>
+        <ng-container matColumnDef="transactionReason">
+          <th mat-header-cell *matHeaderCellDef> Transaction Reason </th>
+          <td mat-cell *matCellDef="let element"> {{element.transactionReason}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+    </div>
+    <div fxFlex fxLayout="column" *ngIf="!!data.accountPercent">
+      <h3>Percent Account ({{data.accountPercent.activity}})</h3>
+      <table mat-table [dataSource]="percentAccountTransactions">
+        <ng-container matColumnDef="debit">
+          <th mat-header-cell *matHeaderCellDef> Debit {{isActive(data.accountPercent) ? '+' : '-'}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.debit}} </td>
+        </ng-container>
+        <ng-container matColumnDef="credit">
+          <th mat-header-cell *matHeaderCellDef> Credit {{isActive(data.accountPercent) ? '-' : '+'}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.credit}} </td>
+        </ng-container>
+        <ng-container matColumnDef="currency">
+          <th mat-header-cell *matHeaderCellDef> Currency </th>
+          <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+        </ng-container>
+        <ng-container matColumnDef="transactionReason">
+          <th mat-header-cell *matHeaderCellDef> Transaction Reason </th>
+          <td mat-cell *matCellDef="let element"> {{element.transactionReason}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+    </div>
+    <div fxFlex fxLayout="column" *ngIf="!!data.accountBank">
+      <h3>Bank Account ({{data.accountBank.activity}})</h3>
+      <table mat-table [dataSource]="bankAccountTransactions">
+        <ng-container matColumnDef="debit">
+          <th mat-header-cell *matHeaderCellDef> Debit {{isActive(data.accountBank) ? '+' : '-'}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.debit}} </td>
+        </ng-container>
+        <ng-container matColumnDef="credit">
+          <th mat-header-cell *matHeaderCellDef> Credit {{isActive(data.accountBank) ? '-' : '+'}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.credit}} </td>
+        </ng-container>
+        <ng-container matColumnDef="currency">
+          <th mat-header-cell *matHeaderCellDef> Currency </th>
+          <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+        </ng-container>
+        <ng-container matColumnDef="transactionReason">
+          <th mat-header-cell *matHeaderCellDef> Transaction Reason </th>
+          <td mat-cell *matCellDef="let element"> {{element.transactionReason}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions fxFlexAlign="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

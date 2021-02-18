@@ -1,4 +1,4 @@
-<h2>New Client</h2>
+<h2>Edit Client</h2>
 <mat-dialog-content>
   <mat-vertical-stepper #stepper>
     <mat-step [stepControl]="firstStepFormGroup">
@@ -60,7 +60,7 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>ID Number</mat-label>
-              <input matInput formControlName="idNumber" [pattern]="idNumberPattern"  mask="0 000000 S 000 SS 0" [showMaskTyped]="true" required autocomplete="off">
+              <input matInput formControlName="idNumber" mask="0 000000 S 000 SS 0" [showMaskTyped]="true" required autocomplete="off">
               <mat-error>Please enter a valid ID Number</mat-error>
             </mat-form-field>
           </div>
@@ -93,16 +93,16 @@
         <div fxLayout="row" fxFlexOffset="28px" fxLayoutGap="12px">
           <div fxLayout="column" fxLayoutGap="12px">
             <mat-form-field appearance="fill">
-              <mat-label>Actual Residence City</mat-label>
-              <mat-select formControlName="actualResidenceCity">
+              <mat-label>City</mat-label>
+              <mat-select formControlName="city">
                 <mat-option *ngFor="let city of cities" [value]="city">
                   {{city}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label>Actual Residence Address</mat-label>
-              <input matInput formControlName="actualResidenceAddress" required autocomplete="off">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address" required autocomplete="off">
               <mat-error>This field is mandatory</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -114,11 +114,9 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label>Nationality</mat-label>
-              <mat-select formControlName="nationality">
-                <mat-option *ngFor="let nationality of nationalities" [value]="nationality">
-                  {{nationality}}
-                </mat-option>
+              <mat-label>Citizenship</mat-label>
+              <mat-select formControlName="citizenship">
+                <mat-option *ngFor="let citizenship of citizenships" [value]="citizenship">{{citizenship}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -174,7 +172,10 @@
     </mat-step>
   </mat-vertical-stepper>
 </mat-dialog-content>
-<mat-dialog-actions fxLayoutAlign="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-flat-button color="primary" [disabled]="!formReady" (click)="save()">Submit</button>
+<mat-dialog-actions>
+  <button mat-button color="warn" (click)="delete()">Delete</button>
+  <div fxFlex fxLayoutAlign="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button color="primary" [disabled]="!formReady" (click)="save()">Submit</button>
+  </div>
 </mat-dialog-actions>

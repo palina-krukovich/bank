@@ -11,13 +11,13 @@ export interface Client {
   dateOfIssue: string;
   idNumber: string;
   placeOfBirth: string;
-  actualResidenceCity: string;
-  actualResidenceAddress: string;
+  city: string;
+  address: string;
   homeNumber?: string;
   mobileNumber?: string;
   email?: string;
   maritalStatus: string;
-  nationality: string;
+  citizenship: string;
   disability: number;
   retired: boolean;
   monthlyIncome?: number;
