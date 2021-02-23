@@ -1,27 +1,51 @@
-# Bank
+# Bank Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
+### About
 
-## Development server
+Application to demonstrate basic bank operations.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Clients management
+- Deposit operations
+- Credit operations
+- Closing bank day
 
-## Code scaffolding
+### Technology Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Component            | Technology            |
+| -------------------- | --------------------- |
+| Front-End            | Angular 10            |
+| Back-End             | Spring Boot (Java 11) |
+| Database             | PostgreSQL            |
+| Client Build Tools   | angular-cli, npm      |
+| Server Build Tools   | Maven                 |
+| Front-End Components | Angular Material      |
 
-## Build
+### Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Ensure you have this installed:
 
-## Running unit tests
+- Java 11
+- Maven 
+- Node.js
+- npm
+- angular-cli
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Build Front-End 
 
-## Running end-to-end tests
+```shell
+# Navigate to the root folder (should contain package.json)
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# Build the project (this will put the files under dist folder)
+ng build
 
-## Further help
+# Serve the application (usually http://localhost:4200)
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Screenshots
+
+![Client](screenshots/client.png)
+![Bank Program](screenshots/bank_program.png)
+![Deposit](screenshots/deposit.png)
+![Credit](screenshots/credit.png)
