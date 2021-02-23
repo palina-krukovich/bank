@@ -1,6 +1,6 @@
 # Bank Management System :moneybag: :bank: :money_with_wings: 
 
-### About
+### About :information_source:
 
 Application to demonstrate basic bank operations.
 
@@ -20,7 +20,7 @@ Application to demonstrate basic bank operations.
 | Server Build Tools   | Maven                 |
 | Front-End Components | Angular Material      |
 
-### Prerequisites
+### Prerequisites :eyes:
 
 Ensure you have this installed:
 
