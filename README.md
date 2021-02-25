@@ -48,4 +48,5 @@ ng serve
 ![Client](screenshots/client.png)
 ![Bank Program](screenshots/bank_program.png)
 ![Deposit](screenshots/deposit.png)
-![Credit](screenshots/credit.png)
+![Credit](screenshots/annuity.png)
+![Credit](screenshots/differentiated.png)

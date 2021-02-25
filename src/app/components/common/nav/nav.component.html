@@ -13,7 +13,7 @@
       Github
     </a>
   </mat-toolbar-row>
-  <mat-toolbar-row fxLayout="row" fxLayoutGap="100px">
+  <mat-toolbar-row fxLayout="row" fxLayoutGap="24px">
     <span class="mat-body-2">{{currentDate | date: 'MMM d, y'}}</span>
     <div fxLayoutGap="24px">
       <span class="mat-body-2">Bank Account: </span>
@@ -21,5 +21,6 @@
       <span class="mat-body-2">{{getBankAmount('EUR')}} EUR</span>
       <span class="mat-body-2">{{getBankAmount('BYN')}} BYN</span>
     </div>
+    <button mat-raised-button color="primary">Open Transactions</button>
   </mat-toolbar-row>
 </mat-toolbar>

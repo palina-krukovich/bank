@@ -30,7 +30,7 @@ public class BankUtil {
     this.transactionService = transactionService;
   }
 
-  public void closeBankDay() {
+  synchronized public void closeBankDay() {
     List<Agreement> activeAgreements =
         agreementService.findActiveAgreements().stream()
             .filter(agreement -> !currentDate.isBefore(agreement.getStartDate()))

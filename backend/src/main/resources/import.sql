@@ -25,7 +25,7 @@ insert into bank_program (type, pay_type, name, currency, percent_rate, min_amou
 insert into bank_program (type, pay_type, name, currency, percent_rate, min_amount, max_amount, min_period, max_period) values ('Credit', 'Annuity', 'Just Auto',         'BYN', 24,    1,     24900,  1,   84);
 insert into bank_program (type, pay_type, name, currency, percent_rate, min_amount, max_amount, min_period, max_period) values ('Credit', 'Annuity', 'New Auto',          'BYN', 24,    9900,  124300, 60,  60);
 
-insert into bank_program (type, pay_type, name, currency, percent_rate, min_amount, max_amount, min_period, max_period) values ('Credit', 'Differentiated', 'Dream Apartment',   'BYN', 10.75, 10000, 373500, 240, 240);
+insert into bank_program (type, pay_type, name, currency, percent_rate, min_amount, max_amount, min_period, max_period) values ('Credit', 'Differentiated', 'Dream Apartment',   'BYN', 10.75, 10000, 373500, 12, 240);
 
 
 insert into account (account_number, activity, type) values ('1111111111111', 'Passive', 'Bank');

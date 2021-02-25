@@ -1,6 +1,6 @@
 <h2>New Credit Agreement</h2>
-<mat-dialog-content>
-  <form [formGroup]="formGroup">
+<mat-dialog-content fxLayout="row">
+  <form [formGroup]="formGroup" fxFlexAlign="center">
     <div fxLayout="row" fxLayoutGap="24px">
       <div fxLayout="column" fxLayoutGap="24px">
         <mat-form-field appearance="fill">
@@ -56,6 +56,24 @@
       </div>
     </div>
   </form>
+  <div fxLayout="column">
+    <button mat-button (click)="calculatePayments()">Calculate Payments</button>
+    <canvas baseChart width="600" height="600"
+            [datasets]="payments"
+            [labels]="months"
+            chartType="bar"
+            [legend]="true">
+<!--            [options]="lineChartOptions"-->
+<!--            [colors]="lineChartColors"-->
+<!--            [legend]="lineChartLegend"-->
+<!--            [chartType]="lineChartType"-->
+<!--            [plugins]="lineChartPlugins"-->
+<!--            (chartHover)="chartHovered($event)"-->
+<!--            (chartClick)="chartClicked($event)"-->
+
+
+    </canvas>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions fxLayoutAlign="end">
   <button mat-button mat-dialog-close>Cancel</button>

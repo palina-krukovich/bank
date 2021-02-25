@@ -22,6 +22,7 @@ import {BankProgramComponent} from './components/bank-program/bank-program.compo
 import {NewDepositAgreementDialogComponent} from './components/deposit/new-deposit-agreement-dialog/new-deposit-agreement-dialog.component';
 import {TransactionDialogComponent} from './components/transaction-dialog/transaction-dialog.component';
 import { NewCreditAgreementDialogComponent } from './components/credit/new-credit-agreement-dialog/new-credit-agreement-dialog.component';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { NewCreditAgreementDialogComponent } from './components/credit/new-credi
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    ChartsModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
